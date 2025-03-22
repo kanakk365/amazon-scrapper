@@ -14,6 +14,10 @@ app.use(cors({
   }))
 app.use(express.json())
 
+app.get("/api/health", (req, res) => {
+    res.status(200).json({ status: "ok" })
+  })
+
 app.post("/api/scrape", async (req, res) => {
     const {url} = req.body
 
