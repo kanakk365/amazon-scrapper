@@ -2,10 +2,22 @@ import puppeteer from 'puppeteer';
 import { ProductData } from './types';
 
 export async function scrapeProduct(url: string): Promise<ProductData> {
+
   const browser = await puppeteer.launch({ 
     headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+    args: [
+      '--no-sandbox', 
+      '--disable-setuid-sandbox', 
+      '--disable-dev-shm-usage',
+      '--disable-gpu',
+      '--disable-features=AudioServiceOutOfProcess',
+      '--disable-extensions'
+    ],
+    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || process.env.CHROME_BIN || undefined,
+    ignoreDefaultArgs: ['--disable-extensions']
   });
+  
+  console.log('Browser launched successfully');
   const page = await browser.newPage();
   
   await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36');
@@ -23,10 +35,12 @@ export async function scrapeProduct(url: string): Promise<ProductData> {
   try {
     await page.goto(url, { 
       waitUntil: 'networkidle2',
-      timeout: 30000
+      timeout: 60000
     });
     
-    await page.waitForSelector('#productTitle', { timeout: 10000 });
+    console.log('Page loaded successfully');
+    await page.waitForSelector('#productTitle', { timeout: 20000 });
+    console.log('Product title found');
     
     const data: ProductData = await page.evaluate(() => {
       const getText = (selector: string) => {
