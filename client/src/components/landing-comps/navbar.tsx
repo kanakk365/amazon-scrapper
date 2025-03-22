@@ -20,14 +20,13 @@ export default function Navbar() {
           </div>
 
           <nav className="hidden md:flex space-x-8">
-            <NavLink to="#features">Features</NavLink>
-            <NavLink to="#howItWorks">How It Works</NavLink>
-            <NavLink to="#pricing">Pricing</NavLink>
+            <NavLink to="/scrape">Scrape</NavLink>
+            <NavLink to="/compare">Compare</NavLink>
             <NavLink to="#faq">FAQ</NavLink>
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
-            <Link to="/dashboard">
+            <Link to="/scrape">
               <ShinyButton className="bg-[#cb4363]">Get Started</ShinyButton>
             </Link>
           </div>
@@ -64,7 +63,7 @@ export default function Navbar() {
                 Contact
               </MobileNavLink>
               <div className="pt-4 space-y-2">
-                <Link to="/login">
+                <Link to="/scrape">
                   <ShinyButton className="bg-[#cb4363] w-full">Login</ShinyButton>
                 </Link>
               </div>

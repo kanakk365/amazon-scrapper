@@ -1,9 +1,11 @@
-import { ArrowRight } from "lucide-react"
+import { BarChart2, Search } from "lucide-react"
 import { ShimmerButton } from "../ui/shimmer-button"
+import { Link } from "react-router-dom"
 
 export default function Hero() {
   return (
     <section id="hero" className="min-h-[70vh] bg-[#f5f5f5] relative overflow-hidden pt-20 mt-12">
+      {/* Animated Grid Background */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black_70%,transparent_100%)]"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -19,12 +21,19 @@ export default function Hero() {
               Extract comprehensive product details from any Amazon India listing and compare multiple products side by
               side. Get pricing, specifications, images, and AI-generated review summaries with a single click.
             </p>
-            <div className="mt-3 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate__animated animate__fadeInUp animate__delay-2s">
-              <ShimmerButton className="bg-[#474747] px-8">
-                <div className="gap-2 hover:gap-4 flex items-center">
-                  Start Scraping <ArrowRight size={14} />
+            <div className="mt-3 flex flex-col sm:flex-row gap-4 justify-center animate__animated animate__fadeInUp animate__delay-2s">
+              <Link to={"/scrape"}> <ShimmerButton className="bg-[#474747] px-8">
+                <div className="gap-2 flex items-center">
+                  <Search size={16} className="mr-1" /> Scrape Product
                 </div>
-              </ShimmerButton>
+              </ShimmerButton></Link>
+             
+
+             <Link to={"/compare"}> <ShimmerButton className="bg-[#cb4363] px-8">
+                <div className="gap-2 flex items-center">
+                  <BarChart2 size={16} className="mr-1" /> Compare Products
+                </div>
+              </ShimmerButton></Link>
             </div>
           </div>
         </div>
@@ -32,4 +41,5 @@ export default function Hero() {
     </section>
   )
 }
+
 

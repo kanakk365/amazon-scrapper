@@ -33,7 +33,7 @@ const items = [
 
 export default function Faq() {
   return (
-<div className="space-y-4 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+<div id="faq" className="space-y-4 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
       <h2 className="text-2xl text-center font-semibold text-[#cb4363]">FAQs</h2>
       <p className="text-center mb-5">Get answers to common questions about our AI automation platform</p>
       <Accordion type="single" collapsible className="w-full" defaultValue="3">

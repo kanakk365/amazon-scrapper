@@ -1,5 +1,6 @@
 import type React from "react"
 import { PulsatingButton } from "../ui/pulsating-button"
+import { Link } from "react-router-dom"
 
 export default function HowItWorks() {
   return (
@@ -65,9 +66,10 @@ export default function HowItWorks() {
               color="#cb4363"
               delay="animate__delay-3s"
             >
-              <div className="mt-4">
+              <Link to={"/scrape"}><div className="mt-4">
                 <PulsatingButton className="w-full font-semibold text-lg">Start Scraping Now</PulsatingButton>
-              </div>
+              </div></Link>
+              
             </StepCard>
           </div>
         </div>
