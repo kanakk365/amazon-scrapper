@@ -29,6 +29,7 @@ export default function Compare() {
     setLoading(true);
     
     try {
+        //const res= await fetch("https://amazon-scrapper-cjmh.onrender.com/api/compare",  {method: "POST",headers: {
         const res= await fetch("http://localhost:3000/api/compare",  {method: "POST",headers: {
             "Content-Type": "application/json",
           },
