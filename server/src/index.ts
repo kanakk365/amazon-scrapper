@@ -7,11 +7,7 @@ import { aiComparision } from "./ai";
 const app = express()
 const port = process.env.PORT || 3000;
 
-app.use(cors({
-    origin: ['http://localhost:5173', 'https://amazon-scrapper-theta.vercel.app/'], 
-    methods: ['GET', 'POST'],
-    credentials: true
-  }))
+app.use(cors())
 app.use(express.json())
 
 app.get("/api/health", (req, res) => {

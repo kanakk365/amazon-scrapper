@@ -23,7 +23,7 @@ export default function Compare() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<ComparisonResult | null>(null);
 
-  // For demo purposes, we'll use the provided sample data
+ 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
