@@ -25,7 +25,7 @@ export async function aiComparision(firstUrl: string, secondUrl: string): Promis
        
         const firstProductData = await scrapeProduct(firstUrl);
         const secondProductData = await scrapeProduct(secondUrl);
-        console.log(firstProductData, secondProductData)
+        
         
         const productComparison = prepareProductComparison(firstProductData, secondProductData);
         

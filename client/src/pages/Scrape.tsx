@@ -25,8 +25,8 @@ export default function Scrape() {
     try {
       setLoading(true)
       setError(null)
-        const response = await fetch("https://amazon-scrapper-cjmh.onrender.com/api/scrape", {
-      // const response = await fetch("http://localhost:3000/api/scrape", {
+      //   const response = await fetch("https://amazon-scrapper-cjmh.onrender.com/api/scrape", {
+       const response = await fetch("http://localhost:3000/api/scrape", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
