@@ -3,18 +3,21 @@ import { ProductData } from './types';
 
 export async function scrapeProduct(url: string): Promise<ProductData> {
 
-  const browser = await puppeteer.launch({ 
-    headless: true,
+  const browser = await puppeteer.launch({
     args: [
-      '--no-sandbox', 
-      '--disable-setuid-sandbox', 
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
       '--disable-dev-shm-usage',
-      '--disable-gpu',
-      '--disable-features=AudioServiceOutOfProcess',
-      '--disable-extensions'
+      '--disable-accelerated-2d-canvas',
+      '--no-first-run',
+      '--no-zygote',
+      '--single-process',
+      '--disable-gpu'
     ],
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || process.env.CHROME_BIN || undefined,
-    ignoreDefaultArgs: ['--disable-extensions']
+    headless: true,
+    executablePath: process.env.NODE_ENV === 'production' 
+      ? process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/google-chrome-stable'
+      : puppeteer.executablePath()
   });
   
   console.log('Browser launched successfully');
