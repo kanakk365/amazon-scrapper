@@ -1,4 +1,4 @@
-import express from "express"
+import express, { Request, Response } from "express"
 import cors from "cors"
 import { scrapeProduct } from "./scrapper";
 import { aiComparision } from "./ai";
@@ -10,11 +10,11 @@ const port = process.env.PORT || 3000;
 app.use(cors())
 app.use(express.json())
 
-app.get("/api/health", (req, res) => {
+app.get("/api/health", (req: Request, res: Response) => {
     res.status(200).json({ status: "ok" })
-  })
+})
 
-app.post("/api/scrape", async (req, res) => {
+app.post("/api/scrape", async (req: Request, res: Response) => {
     const {url} = req.body
 
     if(!url){
@@ -30,8 +30,8 @@ app.post("/api/scrape", async (req, res) => {
     }
 })
 
-app.post("/api/compare" , async(req,res)=>{
-    const { url1 , url2 }= req.body
+app.post("/api/compare", async(req: Request, res: Response) => {
+    const { url1, url2 } = req.body
     
     if(!url1 || !url2){
         res.status(400).json({message:"Please Enter Two URL"})
