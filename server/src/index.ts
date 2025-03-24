@@ -1,7 +1,9 @@
-import express, { Request, Response } from "express"
+import express from "express"
 import cors from "cors"
 import { scrapeProduct } from "./scrapper";
 import { aiComparision } from "./ai";
+import { Response } from "express";
+import { Request } from "express";
 
 
 const app = express()
@@ -10,7 +12,7 @@ const port = process.env.PORT || 3000;
 app.use(cors())
 app.use(express.json())
 
-app.get("/api/health", (req: Request, res: Response) => {
+app.get("/api/health", (req: Request, res: Response ) => {
     res.status(200).json({ status: "ok" })
 })
 
